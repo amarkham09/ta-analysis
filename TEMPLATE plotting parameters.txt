@@ -1,0 +1,15 @@
+Parameter, Value
+Experiment directory, C:\Users\crtgroup\Documents\Part II\Data\TA\2019-10-15\
+File prefix containing kinetics data, Kinetics
+File prefix containing spectral data, Spectrum
+Filename of smapshot timings file, 532nm spectral snapshot timestamps.csv
+Is the data recorded the wrong way up and needs inverting?, true
+Sample name, Triad K
+Absolute temperature, 298
+Field in mT, 25
+Excitation wavelength, 532
+Start of default time plot, -0.01
+End of default time plot, 0.2
+Start of default wavelength plot, 900
+End of default wavelength plot, 1600
+Solvent, MTHF
