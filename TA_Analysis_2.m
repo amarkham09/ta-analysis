@@ -1,4 +1,4 @@
-%TA Analysis 2.0 beta MATLAB script
+%TA Analysis 2.0 MATLAB script
 %This generates the most common MATLAB plots required from a Transient
 %Absorption MFE experiment.
 %Author: Andrew Markham - Part II, Timmel Group 2019-2020
@@ -24,14 +24,14 @@ check_class_exists('XUnits')
 %System parameters to tune functionality. Feel free to change at will:
 %--------------------------------------------------------------------------
 %Default directory to search for parameter files:
-search_dir = 'C:\Users\crtgroup\Documents\Part II\Data\TA/';
+search_dir = 'C:\Users/';
 
 %Plot all times on spectral evolution (true), or just those before end of time
 %window? (false)
 plot_all_evolution = false;
 %--------------------------------------------------------------------------
 
-%Ask the user for the parameter files for each experiment
+%Ask the user for the parameter files for eacdh experiment
 %par_paths is cell array, num_files integer
 [par_paths, num_files] = get_par_files(search_dir);
 
@@ -39,9 +39,6 @@ tic        %Start the runtime timer
 
 %Import experimental data from files
 expts = arrayfun(@(i) Experiment(par_paths{i}), 1:num_files, 'UniformOutput', false);
-
-%TODO:
-%Need to determine whether to add smoothing
 
 %Determine what graphs should be plotted
 if num_files == 1
@@ -53,12 +50,6 @@ if num_files == 1
     %close all
     evolution_fig = plotSpectralEvolution(expts{1},plot_all_evolution);
     
-    %Remove this code eventually
-    %
-    disp(sprintf("save_all(gcf,'%s','spectral_evolution_30_timestamps','true')",expts{1}.directory)) %#ok<*DSPS>
-    disp(sprintf("save_all(gcf,'%s','all_kinetics_species_2','true')",expts{1}.directory))
-    %}
-    
     disp(sprintf('Figures saved to %sFigures \n',expts{1}.directory))
     close all
 else
@@ -69,13 +60,10 @@ else
     
     %Enter in following array which plots required
     %1 is on, 2 is off, 3 is sub, 4 is mfe
-    onOffSubMfe = [1];
+    onOffSubMfe = [1:4];
     normalise = false;
     cross_figs = plotAcross(expts,onOffSubMfe, normalise);
     
-    %Remove this code eventually:
-    disp(sprintf("save_all(gcf,'%s','all_kinetics_species_2','true')",'C:\Users\crtgroup\Desktop\'))%#ok<*DSPS>
-    %}
     close all
 end
 
